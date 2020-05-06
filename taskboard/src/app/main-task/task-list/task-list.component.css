@@ -1,0 +1,32 @@
+.edit {
+    font-size: 1.5em;
+    margin: 15px 5px;
+    color: black;
+    cursor: pointer;
+}
+
+.trash {
+    font-size: 1.5em;
+    margin: 15px 5px;
+    color: dimgray;
+    cursor: pointer;
+}
+
+h2 {
+    color: dimgray;
+    font-size: 14px;
+    font-family: 'Gill Sans', sans-serif;
+}
+
+label {
+    margin: 3px 10px;
+}
+
+.stretch-badge > .mat-badge-content {
+    width: auto;
+    min-width: 22px;
+    border-radius: 13px;
+    right: unset;
+}
+
+

@@ -1,0 +1,51 @@
+<div *ngIf="task">
+    <div class="container">
+        <h3 class="customtable text-center">Task Detail ID: {{task.id}}</h3>
+        <table class="table">
+            <tbody>
+                <tr>
+                    <th>Sprint</th>
+                    <td>{{ task.targetsprint.sprint }}</td>
+                </tr>
+                <tr>
+                    <th>Task</th>
+                    <td>{{ task.task }}</td>
+                </tr>
+                <tr>
+                    <th>Description</th>
+                    <td>{{ task.description }}</td>
+                </tr>
+                <tr>
+                    <th>Accetable Criteria</th>
+                    <td>{{ task.criteria }}</td>
+                </tr>
+                <tr>
+                    <th>Responsible</th>
+                    <td>{{ task.responsible.username }}</td>
+                </tr>
+                <tr>
+                    <th>Estimate Days</th>
+                    <td>{{ task.estimate }}</td>
+                </tr>
+                <tr>
+                    <th>Category</th>
+                    <td>{{ task.targettag }}</td>
+                </tr>
+                <tr>
+                    <th>Status</th>
+                    <td *ngIf="task.status == 1" class="text-danger">Not Started</td>
+                    <td *ngIf="task.status == 2" class="text-warning">On Going</td>
+                    <td *ngIf="task.status == 3" class="text-success">Done</td>
+                </tr>
+                <tr>
+                    <th>Created At</th>
+                    <td>{{ task.created_at | date:"yyyy-MM-dd HH:mm" }}</td>
+                </tr>
+                <tr>
+                    <th>Updated At</th>
+                    <td>{{ task.updated_at | date:"yyyy-MM-dd HH:mm" }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

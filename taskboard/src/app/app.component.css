@@ -1,0 +1,11 @@
+.appview {
+    background-color: whitesmoke;
+    color: green;
+    padding: 30px;
+}
+
+h1 {
+    text-align: center;
+    font-size: 45px;
+    font-family: 'Gill Sans',  sans-serif;
+}

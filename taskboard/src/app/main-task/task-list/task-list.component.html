@@ -1,0 +1,53 @@
+<div class="text-center">
+    <button type="button" class="btn btn-success" (click)="createTask()">
+        Create New Task
+    </button>
+</div>
+
+<h2>Active Sprint</h2>
+
+<div class="form-group">
+    <select id="selectSprint" class="form-control" (change)=onChangeSelect($event.target.value)>
+        <ng-container *ngFor="let sprint of sprints">
+            <option [value]="sprint.id">{{ sprint.sprint }}</option>
+        </ng-container>
+    </select>
+</div>
+
+<div matSort (matSortChange)="sortData($event)" matSortDisableClear>
+    <th mat-sort-header="task">Task ID</th>
+    <th mat-sort-header="category">Category</th>
+    <th mat-sort-header="responsible">Responsible</th>
+    <th mat-sort-header="status">Status</th>
+    <br>
+
+    <div *ngFor="let task of sortedData | sprintfilter: idsprint" class="task-item">
+        <div class="card">
+            <div class="card-body">
+                <label class="float-right">{{ task.responsible.username }}</label>
+
+                <button *ngIf="task.targettag.id == 1"  type="button" disabled class="tag btn btn-success btn-sm float-right">{{ task.targettag.tag }}</button>
+                <button *ngIf="task.targettag.id == 2"  type="button" disabled class="tag btn btn-warning btn-sm float-right">{{ task.targettag.tag }}</button>
+                <button *ngIf="task.targettag.id == 3"  type="button" disabled class="tag btn btn-info btn-sm float-right">{{ task.targettag.tag }}</button>
+                <button *ngIf="task.targettag.id == 4"  type="button" disabled class="tag btn btn-primary btn-sm float-right">{{ task.targettag.tag }}</button>
+                <button *ngIf="task.targettag.id == 5"  type="button" disabled class="tag btn btn-secondary btn-sm float-right">{{ task.targettag.tag }}</button>
+                <button *ngIf="task.targettag.id == 6"  type="button" disabled class="tag btn btn-dark btn-sm float-right">{{ task.targettag.tag }}</button>
+
+                <button *ngIf="task.status===1" type="button" matBadge="0%" matBadgeColor="warn" class="stretch-badge btn btn-secondary card-title" (click)="taskClicked(task)">
+                    <fa-icon [icon]="faThumbtack" class="pin"></fa-icon> ID {{task.id}}: {{task.task}}</button>
+                
+                <button *ngIf="task.status===2" type="button" matBadge="50%" matBadgeColor="accent" class="stretch-badge btn btn-secondary card-title" (click)="taskClicked(task)">
+                    <fa-icon [icon]="faThumbtack" class="pin"></fa-icon> ID {{task.id}}: {{task.task}}</button>
+                
+                <button *ngIf="task.status===3" type="button" matBadge="100%" matBadgeColor="primary" class="stretch-badge btn btn-secondary card-title" (click)="taskClicked(task)">
+                    <fa-icon [icon]="faThumbtack" class="pin"></fa-icon> ID {{task.id}}: {{task.task}}</button>
+
+                <p class="card-text">{{ task.description }}>
+                    <fa-icon [icon]="faTrash" class="trash float-right" (click)="deleteTask(task)"></fa-icon>
+                    <fa-icon [icon]="faEdit" class="edit float-right" (click)="editTask(task)"></fa-icon>
+                </p>
+
+            </div>
+        </div>
+    </div>
+</div>

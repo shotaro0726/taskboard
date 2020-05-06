@@ -1,0 +1,131 @@
+<div class="container">
+    <h3 class="mytitle text-center">Task ID: {{ tasksim.id }}</h3>
+</div>
+
+<form [formGroup]="taskForm" (ngSubmit)="saveForm()">
+    <label>Sprint</label>
+    <br>
+    <div class="form-group">
+        <select id="selectSprint" class="form-control" formControlName="sprint_pk_id"
+            (keydown.enter)="$event.preventDefault()">
+            <ng-container *ngFor="let sprint of sprints | keyvalue: asIsOrder">
+                <option *ngIf="sprint.value.id == tasksim.targetsprint.id" [ngValue]="sprint.value.id" selected>
+                    {{ sprint.value.sprint }}
+                </option>
+
+                <option *ngIf="sprint.value.id != tasksim.targetsprint.id" [ngValue]="sprint.value.id" selected>
+                    {{ sprint.value.sprint }}
+                </option>
+            </ng-container>
+        </select>
+    </div>
+
+    <label>Task Title</label>
+    <div class="form-group">
+        <input type="text" class="form-control" formControlName="task" (keydown.enter)="$event.preventDefault()">
+
+        <div *ngIf="taskForm.control.task.touched && (taskForm.controls.task.errors.longEnough || taskForm.contorls.task.errors.required)"
+            class="alert alert-denger">
+            <span class="glyphicon glyphicon-exclamation-sign"></span>
+            <span *ngIf="taskForm.controls.task.errors.required">
+                Please Enter Task Title.
+            </span>
+
+            <span *ngIf="taskForm.controls.task.errors.longEnough">
+                Task Title must be at least 7 character long!
+            </span>
+        </div>
+    </div>
+
+    <label>Description</label>
+    <div class="form-group">
+        <textarea type="text" class="form-control" formControlName="description" rows="3"></textarea>
+        <br>
+        <div *ngIf="taskForm.contorls.description.touched && taskForm.controls.description.invalid"
+            class="alert alert-danger">
+            <span class="glyphicon glyphicon-exclamation-sign"></span>
+            <span *ngIf="taskForm.controls.description.errors.required">
+                Please enter description
+            </span>
+        </div>
+    </div>
+
+    <label>Acceptable criteria</label>
+    <div class="form-group">
+        <textarea type="text" class="form-control" formControlName="criteria" rows="3"></textarea>
+        <br>
+        <div *ngIf="taskForm.contorls.criteria.touched && taskForm.controls.criteria.invalid"
+            class="alert alert-danger">
+            <span class="glyphicon glyphicon-exclamation-sign"></span>
+            <span *ngIf="taskForm.controls.criteria.errors.required">
+                Please enter criteria
+            </span>
+        </div>
+    </div>
+
+    <label>Responsible person</label>
+    <div class="form-group">
+        <select id="selectUser" class="form-control" formControlName="responsible_pk_id"
+            (keydown.enter)="$event.preventDefault()">
+            <ng-container *ngFor="let user of users | keyvalue: asIsOrder">
+                <option *ngIf="user.value.id == tasksim.responsible.id" [ngValue]="user.value.id" selected>
+                    {{ user.value.username }}
+                </option>
+
+                <option *ngIf="user.value.id != tasksim.responsible.id" [ngValue]="user.value.id" selected>
+                    {{ user.value.username }}
+                </option>
+            </ng-container>
+        </select>
+    </div>
+
+    <label>Estimated days</label>
+    <div class="form-group">
+        <input type="text" class="form-control" formControlName="estimate" (keydown.enter)="$event.preventDefault()">
+
+        <div *ngIf="taskForm.control.estimate.touched && (taskForm.controls.estimate.errors.integer || taskForm.contorls.estimate.errors.required)"
+            class="alert alert-denger">
+            <span class="glyphicon glyphicon-exclamation-sign"></span>
+            <span *ngIf="taskForm.controls.estimate.errors.required">
+                Please enter estimated days
+            </span>
+
+            <span *ngIf="taskForm.controls.estimate.errors.integer">
+                Please enter integer number
+            </span>
+        </div>
+    </div>
+
+    <label>Category</label>
+    <div class="form-group">
+        <select id="selectTag" class="form-control" formControlName="tag_pk_id"
+            (keydown.enter)="$event.preventDefault()">
+            <ng-container *ngFor="let tag of tags | keyvalue: asIsOrder">
+                <option *ngIf="tag.value.id == tasksim.targettag.id" [ngValue]="tag.value.id" selected>
+                    {{ tag.value.tag }}
+                </option>
+
+                <option *ngIf="tag.value.id != tasksim.targettag.id" [ngValue]="tag.value.id" selected>
+                    {{ tag.value.tag }}
+                </option>
+            </ng-container>
+        </select>
+    </div>
+
+    <label>Status</label>
+    <div class="form-group">
+        <select id="selectStatus" class="form-control" formControlName="status">
+            <ng-container>
+                <option ng-model="task.status" value="1">Not Status</option>
+                <option ng-model="task.status" value="2">On Going</option>
+                <option ng-model="task.status" value="3">Done</option>
+            </ng-container>
+        </select>
+    </div>
+
+    <button class="btn btn-success" type="submit" [disabled]="SubmitButtonDisabled()">
+        <span *ngIf="id">Update</span>
+        <span *ngIf="!id">Create</span>
+    </button>
+
+</form>

@@ -1,0 +1,14 @@
+th {
+    color: dimgray;
+    font-weight: bold;
+}
+
+td {
+    color: dimgray;
+    font-weight: normal;
+}
+
+.customtable {
+    font-size: 30px;
+    font-family: 'Gill Sans',  sans-serif;
+}
