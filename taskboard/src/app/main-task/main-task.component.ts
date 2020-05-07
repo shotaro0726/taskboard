@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../api.service';
 import { Task, User, Sprint, Tag } from '../modeltypes'; 
+import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
+import { CookieService } from 'ngx-cookie-service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-main-task',
@@ -10,6 +13,7 @@ import { Task, User, Sprint, Tag } from '../modeltypes';
 
 export class MainTaskComponent implements OnInit {
 
+  faSignOutAlt = faSignOutAlt
   tasks: Task[] = [];
   users: User[] = [];
   sprints: Sprint[] = [];
@@ -17,7 +21,7 @@ export class MainTaskComponent implements OnInit {
   selectedTask: Task = null;
   editedTask: any = null;
 
-  constructor(private apiService: ApiService) { }
+  constructor(private apiService: ApiService, private cookieService: CookieService, private router: Router) { }
 
   ngOnInit(): void {
     this.apiService.getTasks().subscribe(
@@ -86,5 +90,10 @@ export class MainTaskComponent implements OnInit {
       this.tasks[indexup] = task
     }
     this.editedTask = null
+  }
+
+  logout() {
+    this.cookieService.delete('dynamictoken')
+    this.router.navigate(['/authen'])
   }
 }

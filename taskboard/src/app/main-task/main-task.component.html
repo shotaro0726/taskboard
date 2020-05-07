@@ -1,3 +1,7 @@
+<fa-icon [icon]="faSignOutAlt" class="logout float-right" (click)="logout()">
+    
+</fa-icon>
+
 <div class="row">
     <div class="col-md-6" id="left">
         <app-task-list [tasks] = "tasks" [sortedData] = "tasks" [sprints] = "sprints" (selectTask)="selectTask($event)" (createNewTask)="createNewTask()" (editedTask)="editTask($event)" (deletedTask)="deletedTask($event)"></app-task-list>

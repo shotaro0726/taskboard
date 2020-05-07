@@ -9,7 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 const routes: Routes = [
-  {path: '', pathMatch: 'full', redirectTo: 'tasks'}
+  {path: '', pathMatch: 'full', redirectTo: 'authen'}
 ]
 
 @NgModule({

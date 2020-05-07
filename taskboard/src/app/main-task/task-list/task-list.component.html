@@ -33,13 +33,13 @@
                 <button *ngIf="task.targettag.id == 5"  type="button" disabled class="tag btn btn-secondary btn-sm float-right">{{ task.targettag.tag }}</button>
                 <button *ngIf="task.targettag.id == 6"  type="button" disabled class="tag btn btn-dark btn-sm float-right">{{ task.targettag.tag }}</button>
 
-                <button *ngIf="task.status===1" type="button" matBadge="0%" matBadgeColor="warn" class="stretch-badge btn btn-secondary card-title" (click)="taskClicked(task)">
+                <button *ngIf="task.status == 1" type="button" matBadge="0%" matBadgeColor="warn" class="stretch-badge btn btn-secondary card-title" (click)="taskClicked(task)">
                     <fa-icon [icon]="faThumbtack" class="pin"></fa-icon> ID {{task.id}}: {{task.task}}</button>
                 
-                <button *ngIf="task.status===2" type="button" matBadge="50%" matBadgeColor="accent" class="stretch-badge btn btn-secondary card-title" (click)="taskClicked(task)">
+                <button *ngIf="task.status == 2" type="button" matBadge="50%" matBadgeColor="accent" class="stretch-badge btn btn-secondary card-title" (click)="taskClicked(task)">
                     <fa-icon [icon]="faThumbtack" class="pin"></fa-icon> ID {{task.id}}: {{task.task}}</button>
                 
-                <button *ngIf="task.status===3" type="button" matBadge="100%" matBadgeColor="primary" class="stretch-badge btn btn-secondary card-title" (click)="taskClicked(task)">
+                <button *ngIf="task.status == 3" type="button" matBadge="100%" matBadgeColor="primary" class="stretch-badge btn btn-secondary card-title" (click)="taskClicked(task)">
                     <fa-icon [icon]="faThumbtack" class="pin"></fa-icon> ID {{task.id}}: {{task.task}}</button>
 
                 <p class="card-text">{{ task.description }}

@@ -1,0 +1,29 @@
+<mat-card>
+    <mat-card-content>
+        <form [formGroup]="authenForm" (ngSubmit)="saveForm()">
+           <br>
+           <h2 *ngIf="!newAccount">Please login</h2> 
+           <h2 *ngIf="newAccount">Create new account</h2>
+           
+           <mat-form-field class="full-width-input">
+               <input matInput placeholder="Username" formControlName="username" required>
+           </mat-form-field>
+
+           <mat-form-field class="full-width-input">
+               <input matInput type="password" placeholder="Password" formControlName="password" required>
+           </mat-form-field>
+           <br>
+
+           <button mat-raised-button color="success" [disabled]="SubmitButtonDisabled()">
+               <span *ngIf="!newAccount">Login</span>
+               <span *ngIf="newAccount">Register</span>
+           </button>
+        </form>
+        <br>
+    </mat-card-content>
+</mat-card>
+
+<div class="text-center">
+    <p class="account" *ngIf="!newAccount" (click)="newAccount=true">Create new account</p>
+    <p class="account" *ngIf="newAccount" (click)="newAccount=false">Login</p>
+</div>

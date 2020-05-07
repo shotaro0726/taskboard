@@ -5,3 +5,9 @@
     overflow-y: scroll;
 }
 
+.logout {
+    font-size: 3.0em;
+    color: green;
+    cursor: pointer;
+}
+
