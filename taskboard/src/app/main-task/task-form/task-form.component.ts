@@ -42,8 +42,19 @@ export class TaskFormComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  asIsOrder(): number {
+  asIsOrder() {
     return 0
+  }
+
+  
+  SubmitButtonDisabled() {
+    if (!this.taskForm.controls.task.errors.required && !this.taskForm.controls.task.errors.longEnough
+      && !this.taskForm.controls.estimate.errors.required && !this.taskForm.controls.estimate.errors.integer
+      && this.taskForm.controls.description.valid && this.taskForm.controls.criteria.valid) {
+      return false
+    } else {
+      return true
+    }
   }
 
   saveForm() {
@@ -76,16 +87,6 @@ export class TaskFormComponent implements OnInit {
         (result: Task) => this.taskCreated.emit(result),
         error => console.log(error)
       )
-    }
-  }
-
-  SubmitButtonDisabled() {
-    if (!this.taskForm.controls.task.errors.required && !this.taskForm.controls.task.errors.longEnough
-      && !this.taskForm.controls.estimate.errors.required && !this.taskForm.controls.estimate.errors.integer
-      && this.taskForm.controls.description.valid && this.taskForm.controls.criteria.valid) {
-      return false
-    } else {
-      return true
     }
   }
 }
