@@ -24,7 +24,7 @@
     <div class="form-group">
         <input type="text" class="form-control" formControlName="task" (keydown.enter)="$event.preventDefault()">
 
-        <div *ngIf="taskForm.control.task.touched && (taskForm.controls.task.errors.longEnough || taskForm.contorls.task.errors.required)"
+        <div *ngIf="taskForm.controls.task.touched && (taskForm.controls.task.errors.longEnough || taskForm.controls.task.errors.required)"
             class="alert alert-denger">
             <span class="glyphicon glyphicon-exclamation-sign"></span>
             <span *ngIf="taskForm.controls.task.errors.required">
@@ -41,8 +41,7 @@
     <div class="form-group">
         <textarea type="text" class="form-control" formControlName="description" rows="3"></textarea>
         <br>
-        <div *ngIf="taskForm.contorls.description.touched && taskForm.controls.description.invalid"
-            class="alert alert-danger">
+        <div *ngIf="taskForm.controls.description.touched && taskForm.controls.description.invalid" class="alert alert-danger">
             <span class="glyphicon glyphicon-exclamation-sign"></span>
             <span *ngIf="taskForm.controls.description.errors.required">
                 Please enter description
@@ -54,7 +53,7 @@
     <div class="form-group">
         <textarea type="text" class="form-control" formControlName="criteria" rows="3"></textarea>
         <br>
-        <div *ngIf="taskForm.contorls.criteria.touched && taskForm.controls.criteria.invalid"
+        <div *ngIf="taskForm.controls.criteria.touched && taskForm.controls.criteria.invalid"
             class="alert alert-danger">
             <span class="glyphicon glyphicon-exclamation-sign"></span>
             <span *ngIf="taskForm.controls.criteria.errors.required">
@@ -83,7 +82,7 @@
     <div class="form-group">
         <input type="text" class="form-control" formControlName="estimate" (keydown.enter)="$event.preventDefault()">
 
-        <div *ngIf="taskForm.control.estimate.touched && (taskForm.controls.estimate.errors.integer || taskForm.contorls.estimate.errors.required)"
+        <div *ngIf="taskForm.controls.estimate.touched && (taskForm.controls.estimate.errors.integer || taskForm.controls.estimate.errors.required)"
             class="alert alert-denger">
             <span class="glyphicon glyphicon-exclamation-sign"></span>
             <span *ngIf="taskForm.controls.estimate.errors.required">

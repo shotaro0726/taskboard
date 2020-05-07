@@ -82,7 +82,7 @@ export class TaskFormComponent implements OnInit {
   SubmitButtonDisabled() {
     if (!this.taskForm.controls.task.errors.required && !this.taskForm.controls.task.errors.longEnough
       && !this.taskForm.controls.estimate.errors.required && !this.taskForm.controls.estimate.errors.integer
-      && !this.taskForm.controls.description.valid && !this.taskForm.controls.criteria.valid) {
+      && this.taskForm.controls.description.valid && this.taskForm.controls.criteria.valid) {
       return false
     } else {
       return true

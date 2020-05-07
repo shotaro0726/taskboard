@@ -42,7 +42,7 @@
                 <button *ngIf="task.status===3" type="button" matBadge="100%" matBadgeColor="primary" class="stretch-badge btn btn-secondary card-title" (click)="taskClicked(task)">
                     <fa-icon [icon]="faThumbtack" class="pin"></fa-icon> ID {{task.id}}: {{task.task}}</button>
 
-                <p class="card-text">{{ task.description }}>
+                <p class="card-text">{{ task.description }}
                     <fa-icon [icon]="faTrash" class="trash float-right" (click)="deleteTask(task)"></fa-icon>
                     <fa-icon [icon]="faEdit" class="edit float-right" (click)="editTask(task)"></fa-icon>
                 </p>
